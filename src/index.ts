@@ -40,6 +40,7 @@ export default {
 		}
 
 		const openAIApiKey = env.OPENAI_API_KEY;
+		const openAIBaseURL = env.OPENAI_BASE_URL;
 		const sbApiKey = env.SUPABASE_API_KEY;
 		const sbUrl = env.SUPABASE_URL_LC_CHATBOT;
 
@@ -54,7 +55,7 @@ export default {
 
 		const retriever = vectorStore.asRetriever();
 
-		const llm = new ChatOpenAI({ openAIApiKey, model: 'gpt-4o-mini' });
+		const llm = new ChatOpenAI({ openAIApiKey, model: 'gpt-4o-mini', configuration: { baseURL: openAIBaseURL } });
 
 		const standaloneQuestionTemplate = `Given some conversation history (if any) and a question, convert the question to a standalone question. 
 conversation history: {conv_history}
