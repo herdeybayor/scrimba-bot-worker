@@ -3,7 +3,6 @@
 interface Env {
 	OPENAI_API_KEY: string;
 	SUPABASE_URL: string;
-	SUPABASE_URL_LC_CHATBOT: string;
 	SUPABASE_API_KEY: string;
 	OPENAI_BASE_URL: string;
 }

@@ -44,7 +44,7 @@ export default {
 			const openAIApiKey = env.OPENAI_API_KEY;
 			const openAIBaseURL = env.OPENAI_BASE_URL;
 			const sbApiKey = env.SUPABASE_API_KEY;
-			const sbUrl = env.SUPABASE_URL_LC_CHATBOT;
+			const sbUrl = env.SUPABASE_URL;
 
 			const client = createClient(sbUrl, sbApiKey);
 			const embeddings = new OpenAIEmbeddings({ openAIApiKey });
