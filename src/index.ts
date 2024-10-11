@@ -16,7 +16,7 @@ function formatConvHistory(messages: string[]): string {
 }
 
 const corsHeaders = {
-	'Access-Control-Allow-Origin': '*',
+	'Access-Control-Allow-Origin': 'https://scrimba-bot.vercel.app',
 	'Access-Control-Allow-Methods': 'POST, OPTIONS',
 	'Access-Control-Allow-Headers': 'Content-Type',
 };
