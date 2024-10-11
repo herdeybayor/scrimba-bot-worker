@@ -15,14 +15,28 @@ function formatConvHistory(messages: string[]): string {
 	return messages.map((message, i) => (i % 2 === 0 ? `Human: ${message}` : `AI: ${message}`)).join('\n');
 }
 
-const corsHeaders = {
-	'Access-Control-Allow-Origin': '*',
-	'Access-Control-Allow-Methods': 'POST, OPTIONS',
-	'Access-Control-Allow-Headers': 'Content-Type',
+const allowedOrigins = ['https://scrimba-bot.vercel.app'];
+
+const getCORSHeaders = (origin: string | null, env: Env) => {
+	if (origin && allowedOrigins.includes(origin)) {
+		return {
+			'Access-Control-Allow-Origin': origin,
+			'Access-Control-Allow-Methods': 'POST, OPTIONS',
+			'Access-Control-Allow-Headers': 'Content-Type',
+		};
+	}
+	return {
+		'Access-Control-Allow-Origin': env.NODE_ENV === 'development' ? '*' : '',
+		'Access-Control-Allow-Methods': 'POST, OPTIONS',
+		'Access-Control-Allow-Headers': 'Content-Type',
+	};
 };
 
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
+		// Handle CORS
+		const corsHeaders = getCORSHeaders(request.headers.get('origin'), env);
+
 		// Handle CORS preflight request
 		if (request.method === 'OPTIONS') {
 			return new Response(null, {
