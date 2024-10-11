@@ -104,6 +104,7 @@ export default {
 				}
 			);
 		} catch (error) {
+			console.error(error);
 			return new Response('Error processing request', {
 				status: 500,
 				headers: corsHeaders,
