@@ -15,7 +15,7 @@ function formatConvHistory(messages: string[]): string {
 	return messages.map((message, i) => (i % 2 === 0 ? `Human: ${message}` : `AI: ${message}`)).join('\n');
 }
 
-const allowedOrigins = ['https://scrimba-bot.vercel.app', 'http://localhost:8787'];
+const allowedOrigins = ['https://scrimba-bot.vercel.app', 'http://localhost:5173'];
 
 const getCORSHeaders = (origin: string | null, env: Env) => {
 	if (origin && allowedOrigins.includes(origin)) {
